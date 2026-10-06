@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.compose)   // Только для Compose
+    alias(libs.plugins.devtoolsKsp)      // KSP для Room
 
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.devtoolsKsp)
 }
 
 android {
@@ -47,13 +47,12 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    // --- НАЧАЛО: Добавленные зависимости для Room, LiveData и ViewModel ---
+    // --- ROOM, LIVEDATA, VIEWMODEL ---
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
-    // --- КОНЕЦ: Добавленные зависимости ---
 
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))

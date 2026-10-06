@@ -1,5 +1,6 @@
 package com.example.roomdemo
 
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.roomdemo.ui.theme.RoomDemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,4 +36,9 @@ fun ScreenSetup(modifier: Modifier = Modifier) {
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
 
+}
+class MainViewModelFactory(val application: Application) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return MainViewModel(application) as T
+    }
 }
